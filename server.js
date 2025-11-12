@@ -17,6 +17,10 @@ const port = process.env.PORT || 8000;
 // Create an instance of an Express application
 const app = express();
 
+// Body parser middleware to handle JSON data
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Routes middleware
 app.use('/api/posts', posts);
 
