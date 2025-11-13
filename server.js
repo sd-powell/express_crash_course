@@ -10,6 +10,7 @@ import posts from './routes/posts.js';
 // Load environment variables from .env file
 // Also specify in package.json "dev": "node --watch --env-file=.env server"
 import logger from './middleware/logger.js';
+import errorHandler from './middleware/error.js';
 const port = process.env.PORT || 8000;
 
 // Set-up static folder to serve static files
@@ -27,6 +28,9 @@ app.use(logger);
 
 // Routes middleware
 app.use('/api/posts', posts);
+
+// Error handling middleware
+app.use(errorHandler);
 
 // Define a route for the root URL
 // app.get('/', (req, res) => {
