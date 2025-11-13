@@ -9,6 +9,7 @@ import path from 'path';
 import posts from './routes/posts.js';
 // Load environment variables from .env file
 // Also specify in package.json "dev": "node --watch --env-file=.env server"
+import logger from './middleware/logger.js';
 const port = process.env.PORT || 8000;
 
 // Set-up static folder to serve static files
@@ -20,6 +21,9 @@ const app = express();
 // Body parser middleware to handle JSON data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+//Logger middleware
+app.use(logger);
 
 // Routes middleware
 app.use('/api/posts', posts);

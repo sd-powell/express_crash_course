@@ -11,6 +11,12 @@ let posts = [
     { id: 3, title: 'Post Three' }
 ]
 
+// Middleware logger
+// const logger = (req, res, next) => {
+//     console.log(`${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`);
+//     next();
+// };
+
 // Get all posts
 router.get('/', (req, res) => {
     const limit = parseInt(req.query.limit);
