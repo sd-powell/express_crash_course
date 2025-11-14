@@ -1,6 +1,7 @@
 // import express module
 // const express = require('express');
 import express from 'express';
+// import controller functions
 import { 
     getPosts, 
     getPost, 

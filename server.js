@@ -4,6 +4,8 @@ import express from 'express';
 // Import the path module
 // const path = require('path');
 import path from 'path';
+// Import url module
+import { fileURLToPath } from 'url';
 // Import posts routes
 // const posts = require('./routes/posts.js');
 import posts from './routes/posts.js';
@@ -14,8 +16,9 @@ import errorHandler from './middleware/error.js';
 import notFound from './middleware/notFound.js';
 const port = process.env.PORT || 8000;
 
-// Set-up static folder to serve static files
-// app.use(express.static(path.join(__dirname, 'public')));
+// Get the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create an instance of an Express application
 const app = express();
@@ -26,6 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 
 //Logger middleware
 app.use(logger);
+
+// Set-up static folder to serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes middleware
 app.use('/api/posts', posts);
